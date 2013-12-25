@@ -1,5 +1,7 @@
 package de.dpunkt.myaktion.model;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.util.List;
 
 /**
@@ -72,5 +74,19 @@ public class Aktion {
 
     public void setSpenden(List<Spende> spenden) {
         this.spenden = spenden;
+    }
+
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("name", name)
+                .append("spendenZiel", spendenZiel)
+                .append("spendenBetrag", spendenBetrag)
+                .append("bisherGespendet", bisherGespendet)
+                .append("konto", konto)
+                .append("spenden", spenden)
+                .toString();
     }
 }
