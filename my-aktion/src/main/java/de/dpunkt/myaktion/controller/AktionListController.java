@@ -3,6 +3,7 @@ package de.dpunkt.myaktion.controller;
 import de.dpunkt.myaktion.model.Aktion;
 
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 
@@ -10,14 +11,17 @@ import java.io.Serializable;
 @Named
 public class AktionListController implements Serializable {
     private static final long serialVersionUID = 1389774465124782156L;
+    
+    @Inject
+    private AktionEditController aktionEditController;
 
     public String doAddAktion() {
-        System.out.printf("Add Aktion%n"); //NON-NLS
+        aktionEditController.setAktionToEdit(AktionEditController.Mode.ADD);
         return Pages.AKTION_EDIT;
     }
 
     public String doEditAktion(Aktion aktion) {
-        System.out.printf("Edit Aktion %s%n", aktion); //NON-NLS
+        aktionEditController.setAktionToEdit(AktionEditController.Mode.EDIT, aktion);
         return Pages.AKTION_EDIT;
     }
 

@@ -14,6 +14,7 @@ import java.util.List;
 @Named
 public class AktionListProducer implements Serializable {
     private static final long serialVersionUID = 3307596445605019126L;
+    // TODO Liste in eigene Klasse einpacken (Law of demeter)
     private List<Aktion> aktionen;
 
     public AktionListProducer() {
