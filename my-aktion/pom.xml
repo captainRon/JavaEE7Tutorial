@@ -23,6 +23,9 @@
         <jboss.bom.version>1.0.0.Final</jboss.bom.version>
     </properties>
 
+    <prerequisites>
+        <maven>3.0.5</maven>
+    </prerequisites>
     <dependencies>
 
         <!-- First declare the APIs we depend on and need for compilation.
@@ -134,6 +137,11 @@
             <artifactId>arquillian-protocol-servlet</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -159,6 +167,17 @@
                 <version>${jboss.bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.spec.javax.servlet</groupId>
+                <artifactId>jboss-servlet-api_3.0_spec</artifactId>
+                <version>1.0</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
@@ -200,7 +219,65 @@
                 <artifactId>jboss-as-maven-plugin</artifactId>
                 <version>7.1.1.Final</version>
             </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.1</version>
+            </plugin>
         </plugins>
+        <pluginManagement>
+            <plugins>
+                <!-- Compiler plugin enforces Java 1.6 compatibility and activates
+                    annotation processors -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.4</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>2.5</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>2.5.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>2.6</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.3</version>
+                </plugin>
+
+                <!-- The JBoss AS plugin deploys your war to a local JBoss AS
+                    container -->
+                <!-- To use, run: mvn package jboss-as:deploy -->
+                <plugin>
+                    <groupId>org.jboss.as.plugins</groupId>
+                    <artifactId>jboss-as-maven-plugin</artifactId>
+                    <version>7.5.Final</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
+                    <version>2.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
     <profiles>
@@ -217,7 +294,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.4.3</version>
+                        <version>2.16</version>
                         <configuration>
                             <skip>true</skip>
                         </configuration>
@@ -269,7 +346,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-war-plugin</artifactId>
-                        <version>2.1.1</version>
+                        <version>2.4</version>
                         <configuration>
                             <outputDirectory>deployments</outputDirectory>
                             <warName>ROOT</warName>
