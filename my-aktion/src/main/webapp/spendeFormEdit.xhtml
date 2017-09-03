@@ -1,38 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
                 template="WEB-INF/templates/default.xhtml">
     <ui:define name="content">
         <h1>Spendenformular bearbeiten</h1>
         <h:form acceptcharset="UTF-8">
             <h:panelGrid columns="2">
                 <h:outputLabel value="Hintergrundfarbe:"/>
-                <h:selectOneMenu id="bgColor"
-                                 value="#{spendeFormEditController.bgColor}">
-                    <f:selectItem itemLabel="#FFFFFF" itemValue="FFFFFF"/>
-                    <f:selectItem itemLabel="#000000" itemValue="000000"/>
-                    <f:selectItem itemLabel="#FF0000" itemValue="FF0000"/>
-                    <f:ajax render="url"/>
-                </h:selectOneMenu>
+                <p:colorPicker id="bgColor"
+                               value="#{spendeFormEditController.bgColor}"
+                               widgetVar="bgPicker"/>
                 <h:outputLabel value="Textfarbe:"/>
-                <h:selectOneMenu id="textColor"
-                                 value="#{spendeFormEditController.textColor}">
-                    <f:selectItem itemLabel="#FFFFFF" itemValue="FFFFFF"/>
-                    <f:selectItem itemLabel="#000000" itemValue="000000"/>
-                    <f:selectItem itemLabel="#FF0000" itemValue="FF0000"/>
-                    <f:ajax render="url"/>
-                </h:selectOneMenu>
+                <p:colorPicker id="textColor"
+                               value="#{spendeFormEditController.textColor}"
+                               widgetVar="textPicker"/>
                 <h:outputLabel value="URL des Formulars:"/>
-                <h:inputTextarea id="url"
+                <p:inputTextarea id="url"
                                  rows="6"
                                  cols="30"
                                  readonly="true"
                                  value="#{spendeFormEditController.url}"/>
             </h:panelGrid>
-            <h:commandButton value="OK"
-                             action="#{spendeFormEditController.doOk()}"/>
+            <p:commandButton value="Update URL" update="url"/>
+            <p:commandButton value="OK"
+                             action="#{spendeFormEditController.doOk()}"
+                             ajax="false"/>
         </h:form>
     </ui:define>
 </ui:composition>
