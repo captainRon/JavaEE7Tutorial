@@ -21,6 +21,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.7</java.version>
         <javaee-web-api.version>7.0</javaee-web-api.version>
+        <primefaces.version>6.1</primefaces.version>
     </properties>
 
     <dependencies>
@@ -37,6 +38,11 @@
                 <groupId>javax</groupId>
                 <artifactId>javaee-web-api</artifactId>
                 <version>${javaee-web-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.primefaces</groupId>
+                <artifactId>primefaces</artifactId>
+                <version>${primefaces.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -164,4 +170,17 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <profiles>
+        <profile>
+            <id>primefaces</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.primefaces</groupId>
+                    <artifactId>primefaces</artifactId>
+                    <version>${primefaces.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 </project>
