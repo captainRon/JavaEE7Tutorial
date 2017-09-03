@@ -1,0 +1,79 @@
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         comparisonMethod="maven"
+         xmlns="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0"
+         xsi:schemaLocation="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0 http://www.mojohaus.org/versions-maven-plugin/xsd/rule-2.0.0.xsd">
+	<ignoreVersions>
+		<ignoreVersion type="regex">.*-alpha</ignoreVersion>
+		<ignoreVersion type="regex">.*Alpha\d*</ignoreVersion>
+		<ignoreVersion type="regex">.*-beta</ignoreVersion>
+		<ignoreVersion type="regex">.*Beta\d*</ignoreVersion>
+		<ignoreVersion type="regex">.*CR\d*</ignoreVersion>
+	</ignoreVersions>
+	<rules>
+		<rule groupId="dom4j" artifactId="dom4j" comparisonMethod="maven">
+			<ignoreVersions>
+				<ignoreVersion type="regex">20.*</ignoreVersion>
+			</ignoreVersions>
+		</rule>
+		<rule groupId="javax.servlet" artifactId="javax.servlet-api" comparisonMethod="maven">
+			<ignoreVersions>
+				<ignoreVersion type="regex">4.*</ignoreVersion>
+			</ignoreVersions>
+		</rule>
+		<rule groupId="org.hibernate.javax.persistence" artifactId="hibernate-jpa-2.1-api" comparisonMethod="maven">
+			<ignoreVersions>
+				<ignoreVersion type="regex">.*\.Draft-.*</ignoreVersion>
+			</ignoreVersions>
+		</rule>
+		<rule groupId="org.glassfish.jersey.containers" artifactId="jersey-container-servlet" comparisonMethod="maven">
+			<ignoreVersions>
+				<ignoreVersion type="regex">.*-b\d*</ignoreVersion>
+			</ignoreVersions>
+		</rule>
+		<rule groupId="org.glassfish.jersey.ext" artifactId="jersey-spring3" comparisonMethod="maven">
+			<ignoreVersions>
+				<ignoreVersion type="regex">.*-b\d*</ignoreVersion>
+			</ignoreVersions>
+		</rule>
+		<rule groupId="org.glassfish.jersey.media" artifactId="jersey-media-json-jackson" comparisonMethod="maven">
+			<ignoreVersions>
+				<ignoreVersion type="regex">.*-b\d*</ignoreVersion>
+			</ignoreVersions>
+		</rule>
+		<rule groupId="javax.xml.bind" artifactId="jaxb-api" comparisonMethod="maven">
+			<ignoreVersions>
+				<ignoreVersion type="regex">.*-b\d*\.\d*</ignoreVersion>
+			</ignoreVersions>
+		</rule>
+		<rule groupId="com.fasterxml.jackson.core" artifactId="jackson-annotations" comparisonMethod="maven">
+			<ignoreVersions>
+				<ignoreVersion type="regex">.*\.pr\d*</ignoreVersion>
+			</ignoreVersions>
+		</rule>
+		<rule groupId="com.fasterxml.jackson.core" artifactId="jackson-core" comparisonMethod="maven">
+			<ignoreVersions>
+				<ignoreVersion type="regex">.*\.pr\d*</ignoreVersion>
+			</ignoreVersions>
+		</rule>
+		<rule groupId="com.fasterxml.jackson.core" artifactId="jackson-databind" comparisonMethod="maven">
+			<ignoreVersions>
+				<ignoreVersion type="regex">.*\.pr\d*</ignoreVersion>
+			</ignoreVersions>
+		</rule>
+		<rule groupId="org.slf4j" artifactId="jcl-over-slf4j" comparisonMethod="maven">
+			<ignoreVersions>
+				<ignoreVersion type="regex">.*-alpha\d*</ignoreVersion>
+			</ignoreVersions>
+		</rule>
+		<rule groupId="org.slf4j" artifactId="jul-to-slf4j" comparisonMethod="maven">
+			<ignoreVersions>
+				<ignoreVersion type="regex">.*-alpha\d*</ignoreVersion>
+			</ignoreVersions>
+		</rule>
+		<rule groupId="org.slf4j" artifactId="slf4j-api" comparisonMethod="maven">
+			<ignoreVersions>
+				<ignoreVersion type="regex">.*-alpha\d*</ignoreVersion>
+			</ignoreVersions>
+		</rule>
+	</rules>
+</ruleset>
