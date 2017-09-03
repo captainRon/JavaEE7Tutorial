@@ -32,7 +32,6 @@ public class AktionListController implements Serializable {
     }
 
     public String doEditSpendeForm(Aktion aktion) {
-        System.out.println("aktion = " + aktion);
         spendeFormEditController.setAktion(aktion);
         return Pages.SPENDE_FORM_EDIT;
     }
