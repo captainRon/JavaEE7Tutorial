@@ -10,38 +10,45 @@ import java.io.Serializable;
 @SessionScoped
 @Named
 public class AktionListController implements Serializable {
-    private static final long serialVersionUID = 1389774465124782156L;
-    
-    @Inject
-    private AktionEditController aktionEditController;
+	private static final long serialVersionUID = 1389774465124782156L;
 
-    @Inject
-    private SpendeListController spendeListController;
+	@Inject
+	private AktionEditController aktionEditController;
 
-    @Inject
-    private SpendeFormEditController spendeFormEditController;
+	@Inject
+	private SpendeListController spendeListController;
 
-    public String doAddAktion() {
-        aktionEditController.setAktionToEdit(AktionEditController.Mode.ADD);
-        return Pages.AKTION_EDIT;
-    }
+	@Inject
+	private SpendeFormEditController spendeFormEditController;
 
-    public String doEditAktion(Aktion aktion) {
-        aktionEditController.setAktionToEdit(AktionEditController.Mode.EDIT, aktion);
-        return Pages.AKTION_EDIT;
-    }
+	private Aktion aktionToDelete;
 
-    public String doEditSpendeForm(Aktion aktion) {
-        spendeFormEditController.setAktion(aktion);
-        return Pages.SPENDE_FORM_EDIT;
-    }
+	public String doAddAktion() {
+		aktionEditController.setAktionToEdit(AktionEditController.Mode.ADD);
+		return Pages.AKTION_EDIT;
+	}
 
-    public String doListSpende(Aktion aktion) {
-        spendeListController.setAktion(aktion);
-        return Pages.SPENDE_LIST;
-    }
+	public String doEditAktion(Aktion aktion) {
+		aktionEditController.setAktionToEdit(AktionEditController.Mode.EDIT, aktion);
+		return Pages.AKTION_EDIT;
+	}
 
-    public void doDeleteAktion(Aktion aktion) {
-        System.out.printf("Aktion löschen noch nicht implementiert!%n"); //NON-NLS
-    }
+	public String doEditSpendeForm(Aktion aktion) {
+		spendeFormEditController.setAktion(aktion);
+		return Pages.SPENDE_FORM_EDIT;
+	}
+
+	public String doListSpende(Aktion aktion) {
+		spendeListController.setAktion(aktion);
+		return Pages.SPENDE_LIST;
+	}
+
+	public void doDeleteAktion(Aktion aktion) {
+		aktionToDelete = aktion;
+		System.out.printf("Aktion %s zum Löschen vorgemerkt", aktionToDelete); //NON-NLS
+	}
+
+	public void commitDeleteAktion() {
+		System.out.println("Aktion Löschen noch nicht implementiert!");
+	}
 }
